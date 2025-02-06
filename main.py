@@ -13,6 +13,6 @@ def index():
     return jsonify({
         'status': 'ok' if AUTORIZADO else 'falha',
         'message': 'autorizado' if AUTORIZADO else 'negado'
-    })
+    }), 200 if AUTORIZADO else 403  # 200 para autorizado, 403 para negado
 
 app.run(debug=True)
