@@ -4,9 +4,9 @@ import random
 app = Flask(__name__)
 
 def validador():
-    # Sorteia um número entre 1 e 10, caso o número seja PAR retorna True como autorizado
-    NUMERO = random.randint(1, 10)
-    return NUMERO % 2 == 0  # Retorno booleano, True (par) ou False (ímpar)
+    # Tupla com valores, True para autorizado e False para negado
+    valores = (True, False)
+    return random.choice(valores)  # Retorna o booleano de forma aleatória
 
 @app.route('/')
 def index():
