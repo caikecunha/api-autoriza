@@ -17,7 +17,8 @@ def index():
 
     return jsonify({
         'status': 'ok' if AUTORIZADO else 'falha',
-        'message': 'autorizado' if AUTORIZADO else 'negado'
+        'message': 'autorizado' if AUTORIZADO else 'negado',
+        'code': STATUS_CODE
     }), STATUS_CODE
 
 # Endpoint que sempre retorna autorizado
@@ -25,7 +26,8 @@ def index():
 def sempre_autorizado():
     return jsonify({
         'status': 'ok',
-        'message': 'autorizado'
+        'message': 'autorizado',
+        'code': 200
     }), 200
 
 # Endpoint que sempre retorna negado
@@ -33,7 +35,8 @@ def sempre_autorizado():
 def sempre_negado():
     return jsonify({
         'status': 'falha',
-        'message': 'negado'
+        'message': 'negado',
+        'code': 403
     }), 403
 
 if __name__ == "__main__":
