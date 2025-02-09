@@ -30,16 +30,16 @@ Retorna aleatoriamente se a autorização foi concedida ou negada.
 - `200 OK`
   ```json
   {
-    "status": "ok",
-    "message": "autorizado",
+    "status": "success",
+    "authorization": true,
     "code": 200
   }
   ```
 - `403 Forbidden`
   ```json
   {
-    "status": "falha",
-    "message": "negado",
+    "status": "fail",
+    "authorization": false,
     "code": 403
   }
   ```
@@ -51,8 +51,8 @@ Sempre retorna uma resposta de autorização concedida.
 - `200 OK`
   ```json
   {
-    "status": "ok",
-    "message": "autorizado",
+    "status": "success",
+    "authorization": true,
     "code": 200
   }
   ```
@@ -64,8 +64,8 @@ Sempre retorna uma resposta de autorização negada.
 - `403 Forbidden`
   ```json
   {
-    "status": "falha",
-    "message": "negado",
+    "status": "fail",
+    "authorization": false,
     "code": 403
   }
   ```

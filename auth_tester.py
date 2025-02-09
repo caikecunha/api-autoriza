@@ -10,34 +10,34 @@ def validador_autoriza() -> bool:
     return random.choice(VALORES_AUTORIZACAO)
 
 # Endpoint que retorna aleatoriamente
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-    AUTORIZADO = validador_autoriza()
-    STATUS_CODE = 200 if AUTORIZADO else 403  # 200 para autorizado, 403 para negado
+    SITUACAO_AUTORIZADO = validador_autoriza()
+    STATUS_CODE = 200 if SITUACAO_AUTORIZADO else 403  # 200 para autorizado, 403 para negado
 
     return jsonify({
-        'status': 'ok' if AUTORIZADO else 'falha',
-        'message': 'autorizado' if AUTORIZADO else 'negado',
+        'status': 'success' if SITUACAO_AUTORIZADO else 'fail',
+        'authorization': SITUACAO_AUTORIZADO,
         'code': STATUS_CODE
     }), STATUS_CODE
 
 # Endpoint que sempre retorna autorizado
-@app.route('/sempre-autorizado')
+@app.route('/sempre-autorizado', methods=['GET'])
 def sempre_autorizado():
     return jsonify({
-        'status': 'ok',
-        'message': 'autorizado',
+        'status': 'success',
+        'authorization': True,
         'code': 200
     }), 200
 
 # Endpoint que sempre retorna negado
-@app.route('/sempre-negado')
+@app.route('/sempre-negado', methods=['GET'])
 def sempre_negado():
     return jsonify({
-        'status': 'falha',
-        'message': 'negado',
+        'status': 'fail',
+        'authorization': False,
         'code': 403
     }), 403
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(port=5000)
